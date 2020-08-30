@@ -20,11 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dcaaaf0-c24c-452e-b4ec-b4d4fef68863" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/Lock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distributed-lock/src/test/java/com/kaiqiang/learn/distributed/lock/LockTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/distributed-lock/src/test/java/com/kaiqiang/learn/distributed/lock/SpringTestSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLockDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/SimpleLock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/SpringBeanSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/SpringTxUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/util/HostUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/resources/mapper/MysqlLockDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/distributed-lock/src/main/resources/sql/simple_lock.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/distributed-lock/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/LockApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/LockApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/distributed-lock/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/src/test/java/com/kaiqiang/learn/distributed/lock/LockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/test/java/com/kaiqiang/learn/distributed/lock/LockTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/target/classes/com/kaiqiang/learn/distributed/lock/LockApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/target/classes/com/kaiqiang/learn/distributed/lock/LockApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/target/test-classes/com/kaiqiang/learn/distributed/lock/LockTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/target/test-classes/com/kaiqiang/learn/distributed/lock/LockTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +46,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -65,6 +76,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -75,7 +87,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../demo/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/distributed-lock/src/main/resources/mapper" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -89,13 +101,32 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.kaiqiang.learn.distributed.lock.util" />
+      <recent name="com.kaiqiang.learn.distributed.lock.mysql" />
       <recent name="com.kaiqiang.learn.distributed.lock" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/distributed-lock/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/distributed-lock/src/main/resources" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.LockTest.test">
+    <configuration name="LockTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="distributed-lock" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kaiqiang.learn.distributed.lock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kaiqiang.learn.distributed.lock" />
+      <option name="MAIN_CLASS_NAME" value="com.kaiqiang.learn.distributed.lock.LockTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LockApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="distributed-lock" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.kaiqiang.learn.distributed.lock.LockApplication" />
@@ -103,6 +134,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LockTest.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -140,49 +176,88 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1306" y="310" width="1024" height="845" key="#Project_Structure/0.27.2560.1413@0.27.2560.1413" timestamp="1598772041205" />
+    <state x="1110" y="583" width="1416" height="298" key="#SQL_Dialects" timestamp="1598772320859">
+      <screen x="0" y="27" width="2560" height="1413" />
+    </state>
+    <state x="1110" y="583" width="1416" height="298" key="#SQL_Dialects/0.27.2560.1413@0.27.2560.1413" timestamp="1598772320859" />
+    <state x="1418" y="394" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598772355839">
+      <screen x="0" y="27" width="2560" height="1413" />
+    </state>
+    <state x="1418" y="394" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1598772355839" />
+    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1598779061434">
+      <screen x="0" y="27" width="2560" height="1413" />
+    </state>
+    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.27.2560.1413@0.27.2560.1413" timestamp="1598779061434" />
     <state x="1703" y="490" width="424" height="484" key="FileChooserDialogImpl" timestamp="1598771445143">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1703" y="490" width="424" height="484" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1598771445143" />
-    <state width="2506" height="410" key="GridCell.Tab.0.bottom" timestamp="1598771897802">
+    <state width="2506" height="475" key="GridCell.Tab.0.bottom" timestamp="1598781073899">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897802" />
-    <state width="2506" height="410" key="GridCell.Tab.0.center" timestamp="1598771897801">
+    <state width="2506" height="475" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073899" />
+    <state width="2506" height="475" key="GridCell.Tab.0.center" timestamp="1598781073899">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897801" />
-    <state width="2506" height="410" key="GridCell.Tab.0.left" timestamp="1598771897800">
+    <state width="2506" height="475" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073899" />
+    <state width="2506" height="475" key="GridCell.Tab.0.left" timestamp="1598781073898">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897800" />
-    <state width="2506" height="410" key="GridCell.Tab.0.right" timestamp="1598771897801">
+    <state width="2506" height="475" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073898" />
+    <state width="2506" height="475" key="GridCell.Tab.0.right" timestamp="1598781073899">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897801" />
-    <state width="2506" height="410" key="GridCell.Tab.1.bottom" timestamp="1598771897803">
+    <state width="2506" height="475" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073899" />
+    <state width="0" height="0" key="GridCell.Tab.1.bottom" timestamp="1598781073835">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897803" />
-    <state width="2506" height="410" key="GridCell.Tab.1.center" timestamp="1598771897802">
+    <state width="0" height="0" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073835" />
+    <state width="0" height="0" key="GridCell.Tab.1.center" timestamp="1598781073834">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897802" />
-    <state width="2506" height="410" key="GridCell.Tab.1.left" timestamp="1598771897802">
+    <state width="0" height="0" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073834" />
+    <state width="0" height="0" key="GridCell.Tab.1.left" timestamp="1598781073834">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897802" />
-    <state width="2506" height="410" key="GridCell.Tab.1.right" timestamp="1598771897803">
+    <state width="0" height="0" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073834" />
+    <state width="0" height="0" key="GridCell.Tab.1.right" timestamp="1598781073835">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="410" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598771897803" />
+    <state width="0" height="0" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598781073835" />
     <state x="1530" y="489" width="575" height="487" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598772052090">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1530" y="489" width="575" height="487" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1598772052090" />
+    <state x="972" y="418" width="676" height="628" key="find.popup" timestamp="1598780353727">
+      <screen x="0" y="27" width="2560" height="1413" />
+    </state>
+    <state x="972" y="418" width="676" height="628" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1598780353727" />
     <state x="256" y="432" width="747" height="602" key="new project wizard" timestamp="1598771234672">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="256" y="432" width="747" height="602" key="new project wizard/0.27.2560.1413@0.27.2560.1413" timestamp="1598771234672" />
+    <state x="1486" y="347" width="672" height="678" key="search.everywhere.popup" timestamp="1598780297410">
+      <screen x="0" y="27" width="2560" height="1413" />
+    </state>
+    <state x="1486" y="347" width="672" height="678" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1598780297410" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-defaults>
+        <breakpoint suspend="THREAD" type="java-line" />
+      </breakpoints-defaults>
+    </breakpoint-manager>
   </component>
 </project>

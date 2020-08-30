@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiqiang.learn.distributed.lock.mysql.MysqlLockDao">
+
+    <sql id="selectField">id, lock_key, thread_id, expire_time</sql>
+
+    <select id="selectByLockKey" resultType="SimpleLock">
+        select
+            <include refid="selectField" />
+        from simple_lock
+        where lock_key = #{lockKey}
+    </select>
+
+    <select id="selectByLockKeyForUpdate" resultType="SimpleLock">
+        select
+            <include refid="selectField" />
+        from simple_lock
+        where lock_key = #{lockKey} and thread_id = #{threadId}
+        for update
+    </select>
+
+    <insert id="insert">
+        insert into
+            simple_lock(lock_key, thread_id, expire_time)
+        value (#{lock.lockKey}, #{lock.threadId}, #{lock.expireTime})
+    </insert>
+
+    <delete id="batchDelete">
+        delete from simple_lock
+        where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator="," >
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
