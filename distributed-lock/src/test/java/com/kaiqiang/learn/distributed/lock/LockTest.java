@@ -5,12 +5,29 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class LockTest extends SpringTestSupport {
 
     private static final Logger log = LoggerFactory.getLogger(LockTest.class);
+
+    @Test
+    public void test2() throws InterruptedException {
+        int nThreadPerKey = 3;
+        int keyCount = 2;
+
+        List<LockTestThread> runnables = new ArrayList<>();
+        long time = System.currentTimeMillis();
+        for (int i = 0; i < keyCount; i++) {
+            List<String> lockKeys = Collections.singletonList("lockKey-" + time + "-" + i);
+            for (int j = 0; j < nThreadPerKey; j++) {
+                runnables.add(new LockTestThread(lockKeys, 2000));
+            }
+        }
+
+        lockTestSupport(runnables);
+    }
 
     @Test
     public void test() throws InterruptedException {
@@ -26,6 +43,10 @@ public class LockTest extends SpringTestSupport {
             runnables.add(new LockTestThread(lockKeys, lockCount));
         }
 
+        lockTestSupport(runnables);
+    }
+
+    private void lockTestSupport(List<LockTestThread> runnables) throws InterruptedException {
         long start = System.currentTimeMillis();
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < runnables.size(); i++) {
@@ -42,41 +63,40 @@ public class LockTest extends SpringTestSupport {
         log.info("time = {}", System.currentTimeMillis() - start);
     }
 
-
-
     static class LockTestThread implements Runnable {
 
         private final List<String> lockKeys;
-        private final int lockTestCount;
-        private long acquireLockCount = 0;
+        private final int totalTestCount;
+        private long alreadyLockCount = 0;
 
-        public LockTestThread(List<String> lockKeys, int lockTestCount) {
+        public LockTestThread(List<String> lockKeys, int totalTestCount) {
             if(lockKeys == null || lockKeys.isEmpty()) {
                 throw new IllegalArgumentException("lockKeys 不能为空");
             }
             this.lockKeys = lockKeys;
-            this.lockTestCount = lockTestCount;
+            this.totalTestCount = totalTestCount;
         }
 
         @Override
         public void run() {
             int index = 0;
-            while(acquireLockCount < lockTestCount) {
+            String tName = Thread.currentThread().getName();
+            while(alreadyLockCount < totalTestCount) {
                 String lockKey = lockKeys.get(index);
-                Lock lock = MysqlLock.create(lockKey, 20);
+                Lock lock = MysqlLock.create(lockKey, 30);
                 boolean locked = lock.tryLock();
                 if(locked) {
-                    log.info("获得锁成功, lock = {}", lock);
-                    acquireLockCount ++;
-                    String tName = Thread.currentThread().getName();
+                    //log.info("获得锁成功, lock = {}, tName = {}", lock, tName);
+                    alreadyLockCount++;
                     try {
-                        mockExecute();
+                        sleep(10, 100);
                     } finally {
-                        log.info("解锁成功, lock = {}", lock);
+//                        log.info("解锁成功, lock = {}, tName = {}", lock, tName);
                         lock.unlock();
                     }
                 } else {
-                    log.info("获得锁失败, lock = {}", lock);
+                    sleep(10, 20);
+//                    log.info("获得锁失败, lock = {}, tName = {}", lock, tName);
                 }
 
                 index++;
@@ -86,16 +106,14 @@ public class LockTest extends SpringTestSupport {
             }
         }
 
-        private void mockExecute() {
+        private void sleep(int basic, int random) {
 //            log.info("mock execute...");
             try {
-                Thread.sleep(50);
+                Thread.sleep(basic + ThreadLocalRandom.current().nextInt(random));
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                log.error("InterruptedException ", e);
             }
         }
-
-
     }
 
 }

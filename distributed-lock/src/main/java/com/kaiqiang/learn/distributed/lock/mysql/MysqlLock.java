@@ -101,12 +101,13 @@ public class MysqlLock implements Lock {
     }
     private boolean unlock0(String threadId) {
         try {
-            SpringTxUtil.executeWithTx((v) -> {
-                SimpleLock dbLock = dao.selectByLockKeyForUpdate(key, threadId);
-                if(dbLock != null) {
-                    dao.batchDelete(Collections.singletonList(dbLock.getId()));
-                }
-            });
+            SimpleLock dbLock = dao.selectByLockKeyForUpdate(key, threadId);
+            if(dbLock != null) {
+                dao.batchDelete(Collections.singletonList(dbLock.getId()));
+            }
+            /*SpringTxUtil.executeWithTx((v) -> {
+
+            });*/
             return true;
         } catch (Exception e) {
             log.warn("unlock失败[{}], currentThread = {}", key, threadId, e);
@@ -163,7 +164,7 @@ public class MysqlLock implements Lock {
             Thread t = new Thread(new RemoveExpireLock());
             t.setName("remove-expire-lock-thread");
             t.setDaemon(true);
-            t.start();
+            //t.start();
         } catch (Exception e) {
             throw new RuntimeException("启动移除过期锁的线程失败", e);
         }
