@@ -33,4 +33,11 @@
         </foreach>
     </delete>
 
+    <select id="selectExpireLock" resultType="long">
+        select id
+        from simple_lock
+        where id > #{startId} and expire_time &lt;= #{time}
+        limit #{limit}
+    </select>
+
 </mapper>

@@ -2,6 +2,7 @@ package com.kaiqiang.learn.distributed.lock.mysql;
 
 import com.kaiqiang.learn.distributed.lock.Lock;
 import com.kaiqiang.learn.distributed.lock.util.HostUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,9 +10,10 @@ import org.springframework.dao.DuplicateKeyException;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
+import java.util.List;
 
 /**
- * // TODO: 2020/8/30  测试
+ * // TODO: 2020/8/30  1. 删除过期锁的线程; 2. 测试(事务、正确性、压测); 3. 整理文档; 4. 死锁的分析总结
  *
  * @Author kaiqiang
  * @Date 2020/08/30
@@ -45,7 +47,6 @@ public class MysqlLock implements Lock {
     /**
      *
      * @param key not empty
-     * @param dao not null
      * @param expireSeconds >= {@link MysqlLock#MIN_EXPIRE_SECONDS}
      * @return
      */
@@ -124,6 +125,50 @@ public class MysqlLock implements Lock {
     private String currentThreadId() {
         return HostUtils.CURRENT_MACHINE_IP_STR + '#' + HostUtils.PID + '@' + Thread.currentThread().getName();
     }
+
+    // --------------------------------------------------------------------------------
+    // 移除过期锁的线程
+    private static final class RemoveExpireLock implements Runnable {
+
+        private static final int BATCH_REMOVE_SIZE = 5;
+
+        @Override
+        public void run() {
+            while(true) {
+                LocalDateTime time = LocalDateTime.now();
+                try {
+                    log.info("移除过期锁execute...");
+                    List<Long> ids = dao.selectExpireLock(-1, time, BATCH_REMOVE_SIZE);
+                    while(CollectionUtils.isNotEmpty(ids)) {
+                        dao.batchDelete(ids);
+                        long startId = ids.get(ids.size() - 1);
+                        log.info("移除过期锁{}个", ids.size());
+                        ids = dao.selectExpireLock(startId, time, BATCH_REMOVE_SIZE);
+                    }
+                } catch (Exception e) {
+                    log.error("移除过期锁异常 ", e);
+                }
+
+                try {
+                    Thread.sleep(1000); // 每1s扫描一次
+                } catch (InterruptedException e) {
+                    log.error("InterruptedException ", e);
+                }
+            }
+        }
+    }
+
+    static {
+        try {
+            Thread t = new Thread(new RemoveExpireLock());
+            t.setName("remove-expire-lock-thread");
+            t.setDaemon(true);
+            t.start();
+        } catch (Exception e) {
+            throw new RuntimeException("启动移除过期锁的线程失败", e);
+        }
+    }
+    // -----------------------------------------------------------------------------------
 
     @Override
     public String toString() {

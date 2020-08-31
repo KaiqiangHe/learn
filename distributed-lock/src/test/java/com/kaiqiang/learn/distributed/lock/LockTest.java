@@ -14,7 +14,7 @@ public class LockTest extends SpringTestSupport {
 
     @Test
     public void test() throws InterruptedException {
-        int nThread = 40;
+        int nThread = 1;
         int lockCount = 2000;
 
         List<LockTestThread> runnables = new ArrayList<>();

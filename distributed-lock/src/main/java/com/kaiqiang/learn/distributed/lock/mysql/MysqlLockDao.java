@@ -3,6 +3,7 @@ package com.kaiqiang.learn.distributed.lock.mysql;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -27,4 +28,13 @@ public interface MysqlLockDao {
     int insert(@Param("lock") SimpleLock lock);
 
     int batchDelete(@Param("ids") List<Long> ids);
+
+    /**
+     * @param startId where id > startId
+     * @param time 过期时间
+     * @param limit 查询的最大个数
+     */
+    List<Long> selectExpireLock(@Param("startId") long startId,
+                                @Param("time")LocalDateTime time,
+                                @Param("limit") int limit);
 }
