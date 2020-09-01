@@ -17,6 +17,7 @@ import java.util.List;
  * // TODO: 2020/9/1
  * 4. 死锁问题仍然未解决, 参考mysql官网死锁举例：https://dev.mysql.com/doc/refman/5.7/en/innodb-locks-set.html
  * 方案可以参考：让对同一lockKey的写操作串行化
+ * 仍未解决死锁，问题可能出现在gap锁，尝试设置事务隔离级别为RC后，仍有gap锁 -> 考虑隔离级别是否设置正确
  *
  * @Author kaiqiang
  * @Date 2020/08/30
@@ -45,6 +46,8 @@ public class MysqlLock implements Lock {
      */
     private int expireSeconds;
 
+    private int dbSerializeId;
+
     private MysqlLock() { }
 
     /**
@@ -63,6 +66,7 @@ public class MysqlLock implements Lock {
         MysqlLock lock = new MysqlLock();
         lock.expireSeconds = expireSeconds;
         lock.key = key;
+        lock.dbSerializeId = getDBSerializeId(lock.key);
         return lock;
     }
 
@@ -75,11 +79,14 @@ public class MysqlLock implements Lock {
             if(dbLock != null) {
                 return key.equals(dbLock.getLockKey());
             } else {
-                dbLock = new SimpleLock();
-                dbLock.setLockKey(key);
-                dbLock.setThreadId(threadId);
-                dbLock.setExpireTime(LocalDateTime.now().plusSeconds(expireSeconds));
-                dao.insert(dbLock);
+                SpringTxUtil.executeWithTx((v) -> {
+                    SimpleLock newLock = new SimpleLock();
+                    newLock.setLockKey(key);
+                    newLock.setThreadId(threadId);
+                    newLock.setExpireTime(LocalDateTime.now().plusSeconds(expireSeconds));
+                    serializeStart();
+                    dao.insert(newLock);
+                });
                 return true;
             }
         } catch (DuplicateKeyException e) {
@@ -104,22 +111,25 @@ public class MysqlLock implements Lock {
     }
     private boolean unlock0(String threadId) {
         try {
-            /*SpringTxUtil.executeWithTx((v) -> {
-                SimpleLock dbLock = dao.selectByLockKeyForUpdate(key, threadId);
-                if(dbLock != null) {
-                    dao.batchDelete(Collections.singletonList(dbLock.getId()));
-                }
-            });*/
-
             SimpleLock dbLock = dao.selectByLockKeyThreadId(key, threadId);
             if(dbLock != null) {
-                dao.batchDelete(Collections.singletonList(dbLock.getId()));
+                SpringTxUtil.executeWithTx((v) -> {
+                    serializeStart();
+                    dao.batchDelete(Collections.singletonList(dbLock.getId()));
+                });
             }
             return true;
         } catch (Exception e) {
             log.warn("unlock失败[{}], currentThread = {}", key, threadId, e);
             return false;
         }
+    }
+
+    /**
+     *
+     */
+    public void serializeStart() {
+        dao.lockUntilGetDBXLock(dbSerializeId);
     }
 
     @Override
@@ -177,6 +187,14 @@ public class MysqlLock implements Lock {
         }
     }
     // -----------------------------------------------------------------------------------
+
+    /**
+     * 返回
+     */
+    private static final int DB_SERIALIZE_COUNT = 10;
+    private static int getDBSerializeId(String lockKey) {
+        return Math.abs(lockKey.hashCode()) % DB_SERIALIZE_COUNT;
+    }
 
     @Override
     public String toString() {

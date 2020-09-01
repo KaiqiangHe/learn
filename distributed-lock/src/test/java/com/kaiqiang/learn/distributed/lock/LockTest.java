@@ -14,8 +14,8 @@ public class LockTest extends SpringTestSupport {
 
     @Test
     public void test2() throws InterruptedException {
-        int nThreadPerKey = 3;
-        int keyCount = 2;
+        int nThreadPerKey = 10;
+        int keyCount = 5;
 
         List<LockTestThread> runnables = new ArrayList<>();
         long time = System.currentTimeMillis();
@@ -35,10 +35,11 @@ public class LockTest extends SpringTestSupport {
         int lockCount = 2000;
 
         List<LockTestThread> runnables = new ArrayList<>();
+        long time = System.currentTimeMillis();
         for (int i = 0; i < nThread; i++) {
             List<String> lockKeys = new ArrayList<>();
             for (int j = 0; j < 1000; j++) {
-                lockKeys.add("lockKey" + i + "-" + j);
+                lockKeys.add("lockKey" + "-" + time + "-" + i + "-" + j);
             }
             runnables.add(new LockTestThread(lockKeys, lockCount));
         }

@@ -19,13 +19,6 @@ public interface MysqlLockDao {
     SimpleLock selectByLockKey(@Param("lockKey") String lockKey);
 
     /**
-     * select for update
-     * @return nullable
-     */
-    SimpleLock selectByLockKeyForUpdate(@Param("lockKey") String lockKey,
-                                        @Param("threadId")String threadId);
-
-    /**
      * @return nullable
      */
     SimpleLock selectByLockKeyThreadId(@Param("lockKey") String lockKey,
@@ -44,4 +37,10 @@ public interface MysqlLockDao {
     List<Long> selectExpireLock(@Param("startId") long startId,
                                 @Param("time")LocalDateTime time,
                                 @Param("limit") int limit);
+
+
+    /**
+     * select from xxx where id = dbSerializeId for update;
+     */
+    Integer lockUntilGetDBXLock(@Param("dbSerializeId") int dbSerializeId);
 }

@@ -11,14 +11,6 @@
         where lock_key = #{lockKey}
     </select>
 
-    <select id="selectByLockKeyForUpdate" resultType="SimpleLock">
-        select
-            <include refid="selectField" />
-        from simple_lock
-        where lock_key = #{lockKey} and thread_id = #{threadId}
-        for update
-    </select>
-
     <select id="selectByLockKeyThreadId" resultType="SimpleLock">
         select
         <include refid="selectField" />
@@ -45,6 +37,10 @@
         from simple_lock
         where id > #{startId} and expire_time &lt;= #{time}
         limit #{limit}
+    </select>
+
+    <select id="lockUntilGetDBXLock" resultType="int">
+        select id from serialize_support where id = #{dbSerializeId} for update
     </select>
 
 </mapper>

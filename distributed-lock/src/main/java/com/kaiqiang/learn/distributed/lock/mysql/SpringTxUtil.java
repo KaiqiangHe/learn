@@ -18,6 +18,8 @@ public class SpringTxUtil {
 
     private static PlatformTransactionManager transactionManager;
 
+    private static TxSupport txSupport;
+
     public static void setTransactionManager(PlatformTransactionManager transactionManager) {
         if(transactionManager == null) {
             throw new IllegalArgumentException("Parameter 'transactionManager' should not be null");
@@ -25,14 +27,20 @@ public class SpringTxUtil {
         SpringTxUtil.transactionManager = transactionManager;
     }
 
+    public static void setTxSupport(TxSupport txSupport) {
+        SpringTxUtil.txSupport = txSupport;
+    }
+
     public static void executeWithTx(Consumer<Void> consumer) throws Exception {
-        TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
+        /*TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
         try {
             consumer.accept(null);
             transactionManager.commit(status);
         } catch (Exception e) {
             transactionManager.rollback(status);
             throw e;
-        }
+        }*/
+
+        txSupport.executeWithTx(consumer);
     }
 }

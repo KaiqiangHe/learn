@@ -45,7 +45,6 @@
             </dependency>
 
             <!-- Apache Commons -->
-            <!-- Apache Commons -->
             <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
