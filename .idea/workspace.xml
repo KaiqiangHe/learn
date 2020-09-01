@@ -21,11 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6dcaaaf0-c24c-452e-b4ec-b4d4fef68863" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distributed-lock/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distributed-lock/src/test/java/com/kaiqiang/learn/distributed/lock/LockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/test/java/com/kaiqiang/learn/distributed/lock/LockTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distributed-lock/target/classes/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.class" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/target/classes/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distributed-lock/target/test-classes/com/kaiqiang/learn/distributed/lock/LockTest$LockTestThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/target/test-classes/com/kaiqiang/learn/distributed/lock/LockTest$LockTestThread.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/distributed-lock/target/test-classes/com/kaiqiang/learn/distributed/lock/LockTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/target/test-classes/com/kaiqiang/learn/distributed/lock/LockTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLockDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLockDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/src/main/resources/mapper/MysqlLockDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/main/resources/mapper/MysqlLockDao.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +156,8 @@
       <option name="presentableId" value="Default" />
       <updated>1598771198412</updated>
       <workItem from="1598771201172" duration="306000" />
-      <workItem from="1598881662664" duration="3495000" />
+      <workItem from="1598881662664" duration="4165000" />
+      <workItem from="1598961208144" duration="2556000" />
     </task>
     <servers />
   </component>
@@ -206,38 +204,38 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1703" y="490" width="424" height="484" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1598882902188" />
-    <state width="2506" height="451" key="GridCell.Tab.0.bottom" timestamp="1598885145037">
+    <state width="2506" height="595" key="GridCell.Tab.0.bottom" timestamp="1598963365175">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="451" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598885145037" />
-    <state width="2506" height="451" key="GridCell.Tab.0.center" timestamp="1598885145037">
+    <state width="2506" height="595" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598963365175" />
+    <state width="2506" height="595" key="GridCell.Tab.0.center" timestamp="1598963365175">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="451" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598885145037" />
-    <state width="2506" height="451" key="GridCell.Tab.0.left" timestamp="1598885145036">
+    <state width="2506" height="595" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598963365175" />
+    <state width="2506" height="595" key="GridCell.Tab.0.left" timestamp="1598963365174">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="451" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598885145036" />
-    <state width="2506" height="451" key="GridCell.Tab.0.right" timestamp="1598885145037">
+    <state width="2506" height="595" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598963365174" />
+    <state width="2506" height="595" key="GridCell.Tab.0.right" timestamp="1598963365175">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="451" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598885145037" />
-    <state width="2506" height="1051" key="GridCell.Tab.1.bottom" timestamp="1598885148504">
+    <state width="2506" height="595" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598963365175" />
+    <state width="2506" height="892" key="GridCell.Tab.1.bottom" timestamp="1598963368188">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="1051" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598885148504" />
-    <state width="2506" height="1051" key="GridCell.Tab.1.center" timestamp="1598885148504">
+    <state width="2506" height="892" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1598963368188" />
+    <state width="2506" height="892" key="GridCell.Tab.1.center" timestamp="1598963368188">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="1051" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598885148504" />
-    <state width="2506" height="1051" key="GridCell.Tab.1.left" timestamp="1598885148504">
+    <state width="2506" height="892" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1598963368188" />
+    <state width="2506" height="892" key="GridCell.Tab.1.left" timestamp="1598963368188">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="1051" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598885148504" />
-    <state width="2506" height="1051" key="GridCell.Tab.1.right" timestamp="1598885148504">
+    <state width="2506" height="892" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1598963368188" />
+    <state width="2506" height="892" key="GridCell.Tab.1.right" timestamp="1598963368188">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2506" height="1051" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598885148504" />
+    <state width="2506" height="892" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1598963368188" />
     <state x="1530" y="489" width="575" height="487" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598772052090">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
@@ -260,8 +258,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="7" />
+          <line>88</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>

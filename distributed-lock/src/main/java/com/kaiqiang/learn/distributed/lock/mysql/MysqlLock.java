@@ -13,7 +13,10 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * // TODO: 2020/8/30  1. 删除过期锁的线程; 2. 测试(事务、正确性、压测); 3. 整理文档; 4. 死锁的分析总结
+ * // TODO: 2020/8/30  1. 删除过期锁的线程; 2. 测试(事务、正确性、压测); 3. 整理文档;
+ * // TODO: 2020/9/1
+ * 4. 死锁问题仍然未解决, 参考mysql官网死锁举例：https://dev.mysql.com/doc/refman/5.7/en/innodb-locks-set.html
+ * 方案可以参考：让对同一lockKey的写操作串行化
  *
  * @Author kaiqiang
  * @Date 2020/08/30
@@ -80,7 +83,7 @@ public class MysqlLock implements Lock {
                 return true;
             }
         } catch (DuplicateKeyException e) {
-            log.error("DuplicateException {} lock = {}", threadId, this);
+            log.info("DuplicateException {} lock = {}", threadId, this);
             // empty body
         } catch (Exception e) {
             log.error("tryLock失败[{}], currentThread = {}", key, threadId, e);
@@ -101,13 +104,17 @@ public class MysqlLock implements Lock {
     }
     private boolean unlock0(String threadId) {
         try {
-            SimpleLock dbLock = dao.selectByLockKeyForUpdate(key, threadId);
+            /*SpringTxUtil.executeWithTx((v) -> {
+                SimpleLock dbLock = dao.selectByLockKeyForUpdate(key, threadId);
+                if(dbLock != null) {
+                    dao.batchDelete(Collections.singletonList(dbLock.getId()));
+                }
+            });*/
+
+            SimpleLock dbLock = dao.selectByLockKeyThreadId(key, threadId);
             if(dbLock != null) {
                 dao.batchDelete(Collections.singletonList(dbLock.getId()));
             }
-            /*SpringTxUtil.executeWithTx((v) -> {
-
-            });*/
             return true;
         } catch (Exception e) {
             log.warn("unlock失败[{}], currentThread = {}", key, threadId, e);

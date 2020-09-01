@@ -25,6 +25,13 @@ public interface MysqlLockDao {
     SimpleLock selectByLockKeyForUpdate(@Param("lockKey") String lockKey,
                                         @Param("threadId")String threadId);
 
+    /**
+     * @return nullable
+     */
+    SimpleLock selectByLockKeyThreadId(@Param("lockKey") String lockKey,
+                                        @Param("threadId")String threadId);
+
+
     int insert(@Param("lock") SimpleLock lock);
 
     int batchDelete(@Param("ids") List<Long> ids);
