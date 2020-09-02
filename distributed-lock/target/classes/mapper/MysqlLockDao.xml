@@ -39,7 +39,7 @@
         limit #{limit}
     </select>
 
-    <select id="lockUntilGetDBXLock" resultType="int">
+    <select id="selectForUpdate" resultType="int">
         select id from serialize_support where id = #{dbSerializeId} for update
     </select>
 

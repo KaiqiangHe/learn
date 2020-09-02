@@ -14,8 +14,8 @@ public class LockTest extends SpringTestSupport {
 
     @Test
     public void test2() throws InterruptedException {
-        int nThreadPerKey = 10;
-        int keyCount = 5;
+        int nThreadPerKey = 5;
+        int keyCount = 10;
 
         List<LockTestThread> runnables = new ArrayList<>();
         long time = System.currentTimeMillis();
@@ -87,12 +87,12 @@ public class LockTest extends SpringTestSupport {
                 Lock lock = MysqlLock.create(lockKey, 30);
                 boolean locked = lock.tryLock();
                 if(locked) {
-                    //log.info("获得锁成功, lock = {}, tName = {}", lock, tName);
+                    log.info("获得锁成功, lock = {}, tName = {}", lock, tName);
                     alreadyLockCount++;
                     try {
                         sleep(10, 100);
                     } finally {
-//                        log.info("解锁成功, lock = {}, tName = {}", lock, tName);
+                        log.info("解锁成功, lock = {}, tName = {}", lock, tName);
                         lock.unlock();
                     }
                 } else {
@@ -117,4 +117,15 @@ public class LockTest extends SpringTestSupport {
         }
     }
 
+    @Test
+    public void generateSerializeSupportDataSql() {
+        String sqlPrefix = "insert into serialize_support(id) values ";
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 1000; i++) {
+            sb.append("(").append(i).append(")").append(",");
+        }
+
+        log.info("result = {}", sqlPrefix + sb.toString());
+    }
 }

@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 public class TxSupport {
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public void executeWithTx(Consumer<Void> consumer) {
+    public void executeWithReadCommittedTx(Consumer<Void> consumer) {
         consumer.accept(null);
     }
 }

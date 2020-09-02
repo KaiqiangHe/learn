@@ -42,5 +42,5 @@ public interface MysqlLockDao {
     /**
      * select from xxx where id = dbSerializeId for update;
      */
-    Integer lockUntilGetDBXLock(@Param("dbSerializeId") int dbSerializeId);
+    Integer selectForUpdate(@Param("dbSerializeId") int dbSerializeId);
 }

@@ -17,9 +17,6 @@ public class SpringBeanSupport implements InitializingBean {
     private MysqlLockDao mysqlLockDao;
 
     @Resource
-    private PlatformTransactionManager platformTransactionManager;
-
-    @Resource
     private TxSupport txSupport;
 
     @Override
@@ -27,15 +24,11 @@ public class SpringBeanSupport implements InitializingBean {
         if(mysqlLockDao == null) {
             throw new RuntimeException("mysqlLockDao 为null");
         }
-        if(platformTransactionManager == null) {
-            throw new RuntimeException("platformTransactionManager为null");
-        }
         if(txSupport == null) {
             throw new RuntimeException("txSupport为null");
         }
 
         MysqlLock.setMysqlLockDao(mysqlLockDao);
-        SpringTxUtil.setTransactionManager(platformTransactionManager);
-        SpringTxUtil.setTxSupport(txSupport);
+        MysqlLock.setTxSupport(txSupport);
     }
 }
