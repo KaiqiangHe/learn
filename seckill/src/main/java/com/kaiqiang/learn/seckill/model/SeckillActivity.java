@@ -2,17 +2,18 @@ package com.kaiqiang.learn.seckill.model;
 
 import com.kaiqiang.learn.seckill.dao.StockDao;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.time.LocalDateTime;
+import java.util.*;
 
 /**
  * 商品秒杀活动model类
  *
+ * // TODO: 2020/9/8  完善活动、库存、商品、库存抽象
+ *
  * @Author kaiqiang
  * @Date 2020/09/07
  */
-public class ProductActivity {
+public class SeckillActivity {
 
     private static StockDao stockDao;
 
@@ -35,16 +36,34 @@ public class ProductActivity {
     /**
      * 当前活动是否有剩余库存
      */
-    private boolean hasRemain;
+    private volatile boolean hasRemain;
 
-    private ProductActivity() {
+    private SeckillActivity() {
     }
 
-    public static ProductActivity initProductActivity(String acitvityId) {
-        ProductActivity result = new ProductActivity();
-        result.hasRemain = true;
-        // TODO: 2020/9/7
+    public static SeckillActivity initProductActivity(String activityId) {
+        SeckillActivity result = new SeckillActivity();
+        Stock stock = new Stock();
+        stock.setHasRemain(true);
+        stock.setStockId("apple_20200907-01");
 
+        Stock stock2 = new Stock();
+        stock2.setHasRemain(true);
+        stock2.setStockId("apple_20200907-02");
+
+        Stock stock3 = new Stock();
+        stock3.setHasRemain(true);
+        stock3.setStockId("apple_20200907-03");
+
+        List<Stock> stocks = Arrays.asList(stock, stock2, stock3);
+
+        result.stockMap = new HashMap<>();
+        stocks.forEach(s -> {
+            result.stockMap.put(s.getStockId(), s);
+        });
+        result.hasRemainStockIdList = new ArrayList<>(result.stockMap.keySet());
+        result.activityId = activityId;
+        result.hasRemain = true;
         return result;
     }
 
@@ -53,7 +72,7 @@ public class ProductActivity {
      *
      * @param addCount > 0
      */
-    private boolean addUseStock(int addCount) {
+    public boolean addUseStock(int addCount) {
         if(addCount <= 0) {
             throw new IllegalArgumentException("Parameter addCount should > 0, but current addCount is " + addCount);
         }
@@ -116,6 +135,6 @@ public class ProductActivity {
     // --------------------------------------------------------------------------------------------
     public static void setStockDao(StockDao stockDao) {
         Objects.requireNonNull(stockDao, "Parameter 'stockDao' should not be null");
-        ProductActivity.stockDao = stockDao;
+        SeckillActivity.stockDao = stockDao;
     }
 }

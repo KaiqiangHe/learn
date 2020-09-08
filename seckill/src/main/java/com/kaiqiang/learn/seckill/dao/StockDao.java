@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StockDao {
 
-    Stock selectByStockId(@Param("stockId") String stockId);
+    //Stock selectByStockId(@Param("stockId") String stockId);
 
     int initStock(@Param("stockId") String stockId,
                   @Param("totalStock") String totalStock);

@@ -20,16 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dcaaaf0-c24c-452e-b4ec-b4d4fef68863" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seckill/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/SeckillApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/dao/StockDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/ProductActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/Stock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/service/StockManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/resources/mapper/StockDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/resources/sql/seckill.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/spring/SpringBeanSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SpringTestSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/dao/StockDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/dao/StockDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/ProductActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/SeckillActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/service/StockManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/src/main/resources/mapper/StockDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/resources/mapper/StockDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/SeckillApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/SeckillApplication.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -90,16 +89,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.kaiqiang.learn.distributed.lock" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.kaiqiang.learn.seckill" />
-      <recent name="com.kaiqiang.learn.distributed.lock.util" />
-      <recent name="com.kaiqiang.learn.distributed.lock.mysql" />
+      <recent name="com.kaiqiang.learn.seckill.model" />
       <recent name="com.kaiqiang.learn.distributed.lock" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.kaiqiang.learn.seckill.model" />
+      <recent name="com.kaiqiang.learn.seckill" />
+      <recent name="com.kaiqiang.learn.distributed.lock.util" />
+      <recent name="com.kaiqiang.learn.distributed.lock.mysql" />
+      <recent name="com.kaiqiang.learn.distributed.lock" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/seckill/src/main/resources/mapper" />
@@ -115,7 +116,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.SeckillApplication">
+  <component name="RunManager" selected="JUnit.SeckillActivityTest.testAddUseCount">
     <configuration name="LockTest.generateSerializeSupportDataSql" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="distributed-lock" />
       <extension name="coverage">
@@ -164,6 +165,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SeckillActivityTest.testAddUseCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="seckill" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kaiqiang.learn.seckill.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kaiqiang.learn.seckill.model" />
+      <option name="MAIN_CLASS_NAME" value="com.kaiqiang.learn.seckill.model.SeckillActivityTest" />
+      <option name="METHOD_NAME" value="testAddUseCount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LockApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="distributed-lock" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.kaiqiang.learn.distributed.lock.LockApplication" />
@@ -180,6 +197,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SeckillActivityTest.testAddUseCount" />
         <item itemvalue="JUnit.LockTest.test2" />
         <item itemvalue="JUnit.LockTest.generateSerializeSupportDataSql" />
         <item itemvalue="JUnit.LockTest.test" />
@@ -202,6 +220,7 @@
       <workItem from="1599048876284" duration="2440000" />
       <workItem from="1599051893885" duration="32000" />
       <workItem from="1599485236806" duration="4997000" />
+      <workItem from="1599572039395" duration="2374000" />
     </task>
     <servers />
   </component>
@@ -236,10 +255,10 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1418" y="394" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1598772355839" />
-    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1599490149179">
+    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1599572658083">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.27.2560.1413@0.27.2560.1413" timestamp="1599490149179" />
+    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.27.2560.1413@0.27.2560.1413" timestamp="1599572658083" />
     <state x="772" y="27" width="1006" height="1413" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598883328256">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
@@ -252,42 +271,42 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1703" y="490" width="424" height="484" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1598964096633" />
-    <state width="2001" height="534" key="GridCell.Tab.0.bottom" timestamp="1599486296087">
+    <state width="2001" height="509" key="GridCell.Tab.0.bottom" timestamp="1599574387196">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296087" />
-    <state width="2001" height="534" key="GridCell.Tab.0.center" timestamp="1599486296087">
+    <state width="2001" height="509" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599574387196" />
+    <state width="2001" height="509" key="GridCell.Tab.0.center" timestamp="1599574387196">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296087" />
-    <state width="2001" height="534" key="GridCell.Tab.0.left" timestamp="1599486296086">
+    <state width="2001" height="509" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599574387196" />
+    <state width="2001" height="509" key="GridCell.Tab.0.left" timestamp="1599574387195">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296086" />
-    <state width="2001" height="534" key="GridCell.Tab.0.right" timestamp="1599486296087">
+    <state width="2001" height="509" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599574387195" />
+    <state width="2001" height="509" key="GridCell.Tab.0.right" timestamp="1599574387196">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296087" />
-    <state width="2001" height="534" key="GridCell.Tab.1.bottom" timestamp="1599486296088">
+    <state width="2001" height="509" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599574387196" />
+    <state width="2506" height="600" key="GridCell.Tab.1.bottom" timestamp="1599573893593">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296088" />
-    <state width="2001" height="534" key="GridCell.Tab.1.center" timestamp="1599486296087">
+    <state width="2506" height="600" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599573893593" />
+    <state width="2506" height="600" key="GridCell.Tab.1.center" timestamp="1599573893593">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296087" />
-    <state width="2001" height="534" key="GridCell.Tab.1.left" timestamp="1599486296087">
+    <state width="2506" height="600" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599573893593" />
+    <state width="2506" height="600" key="GridCell.Tab.1.left" timestamp="1599573893592">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296087" />
-    <state width="2001" height="534" key="GridCell.Tab.1.right" timestamp="1599486296087">
+    <state width="2506" height="600" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599573893592" />
+    <state width="2506" height="600" key="GridCell.Tab.1.right" timestamp="1599573893593">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state width="2001" height="534" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599486296087" />
-    <state x="1530" y="489" width="575" height="487" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1598772052090">
+    <state width="2506" height="600" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599573893593" />
+    <state x="1530" y="489" width="575" height="487" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1599572666754">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state x="1530" y="489" width="575" height="487" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1598772052090" />
+    <state x="1530" y="489" width="575" height="487" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1599572666754" />
     <state x="807" y="393" width="936" height="678" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1599049321221">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
@@ -318,10 +337,25 @@
           <line>104</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
         <breakpoint suspend="THREAD" type="java-line" />
       </breakpoints-defaults>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo typeName="java.util.HashMap$Node" fieldName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
