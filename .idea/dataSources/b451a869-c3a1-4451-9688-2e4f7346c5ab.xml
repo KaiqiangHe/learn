@@ -898,32 +898,22 @@
     <user id="284" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="285" parent="3" name="serialize_support"/>
-    <table id="286" parent="3" name="simple_lock"/>
-    <table id="287" parent="3" name="simple_lock_0"/>
-    <table id="288" parent="3" name="simple_lock_1"/>
-    <table id="289" parent="3" name="simple_lock_2"/>
-    <table id="290" parent="3" name="simple_lock_3"/>
-    <table id="291" parent="3" name="simple_lock_4"/>
-    <table id="292" parent="3" name="simple_lock_5"/>
-    <table id="293" parent="3" name="simple_lock_6"/>
-    <table id="294" parent="3" name="simple_lock_7"/>
-    <table id="295" parent="3" name="simple_lock_8"/>
-    <table id="296" parent="3" name="simple_lock_9"/>
-    <table id="297" parent="3" name="stock"/>
-    <column id="298" parent="285" name="id">
-      <Position>1</Position>
-      <Comment>id</Comment>
-      <DataType>int unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="299" parent="285" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="300" parent="286" name="id">
+    <table id="285" parent="3" name="id_generator"/>
+    <table id="286" parent="3" name="seckill_activity"/>
+    <table id="287" parent="3" name="serialize_support"/>
+    <table id="288" parent="3" name="simple_lock"/>
+    <table id="289" parent="3" name="simple_lock_0"/>
+    <table id="290" parent="3" name="simple_lock_1"/>
+    <table id="291" parent="3" name="simple_lock_2"/>
+    <table id="292" parent="3" name="simple_lock_3"/>
+    <table id="293" parent="3" name="simple_lock_4"/>
+    <table id="294" parent="3" name="simple_lock_5"/>
+    <table id="295" parent="3" name="simple_lock_6"/>
+    <table id="296" parent="3" name="simple_lock_7"/>
+    <table id="297" parent="3" name="simple_lock_8"/>
+    <table id="298" parent="3" name="simple_lock_9"/>
+    <table id="299" parent="3" name="stock"/>
+    <column id="300" parent="285" name="id">
       <Position>1</Position>
       <Comment>id</Comment>
       <DataType>bigint unsigned|0s</DataType>
@@ -931,302 +921,12 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="301" parent="286" name="lock_key">
-      <Position>2</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="302" parent="286" name="thread_id">
-      <Position>3</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="303" parent="286" name="expire_time">
-      <Position>4</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="304" parent="286" name="uniq_lock_key">
-      <ColNames>lock_key</ColNames>
-      <Unique>1</Unique>
-      <Type>btree</Type>
-    </index>
-    <key id="305" parent="286" name="PRIMARY">
+    <key id="301" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="306" parent="286" name="uniq_lock_key">
-      <ColNames>lock_key</ColNames>
-      <UnderlyingIndexName>uniq_lock_key</UnderlyingIndexName>
-    </key>
-    <column id="307" parent="287" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="308" parent="287" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="309" parent="287" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="310" parent="287" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="311" parent="288" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="312" parent="288" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="313" parent="288" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="314" parent="288" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="315" parent="289" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="316" parent="289" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="317" parent="289" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="318" parent="289" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="319" parent="290" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="320" parent="290" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="321" parent="290" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="322" parent="290" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="323" parent="291" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="324" parent="291" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="325" parent="291" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="326" parent="291" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="327" parent="292" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="328" parent="292" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="329" parent="292" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="330" parent="292" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="331" parent="293" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="332" parent="293" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="333" parent="293" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="334" parent="293" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="335" parent="294" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="336" parent="294" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="337" parent="294" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="338" parent="294" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="339" parent="295" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="340" parent="295" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="341" parent="295" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="342" parent="295" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="343" parent="296" name="lock_key">
-      <Position>1</Position>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="344" parent="296" name="thread_name">
-      <Position>2</Position>
-      <Comment>锁的当前线程</Comment>
-      <DataType>varchar(50)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="345" parent="296" name="expire_time">
-      <Position>3</Position>
-      <Comment>锁失效时间</Comment>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="346" parent="296" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>lock_key</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="347" parent="297" name="id">
+    <column id="302" parent="286" name="id">
       <Position>1</Position>
       <Comment>id</Comment>
       <DataType>bigint unsigned|0s</DataType>
@@ -1234,47 +934,413 @@
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="297" name="stock_id">
+    <column id="303" parent="286" name="activity_id">
       <Position>2</Position>
-      <Comment>库存id</Comment>
+      <Comment>活动id</Comment>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="297" name="use_stock">
+    <column id="304" parent="286" name="activity_name">
       <Position>3</Position>
-      <Comment>当前已使用库存</Comment>
-      <DataType>int unsigned|0s</DataType>
+      <Comment>活动名称</Comment>
+      <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="297" name="total_stock">
+    <column id="305" parent="286" name="create_time">
       <Position>4</Position>
-      <Comment>总可使用库存</Comment>
-      <DataType>int unsigned|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="351" parent="297" name="create_time">
-      <Position>5</Position>
       <Comment>创建时间</Comment>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="352" parent="297" name="uniq_stock_id">
-      <ColNames>stock_id</ColNames>
+    <index id="306" parent="286" name="uniq_activity_id">
+      <ColNames>activity_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="353" parent="297" name="PRIMARY">
+    <key id="307" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="354" parent="297" name="uniq_stock_id">
+    <key id="308" parent="286" name="uniq_activity_id">
+      <ColNames>activity_id</ColNames>
+      <UnderlyingIndexName>uniq_activity_id</UnderlyingIndexName>
+    </key>
+    <column id="309" parent="287" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>int unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="310" parent="287" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="311" parent="288" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="312" parent="288" name="lock_key">
+      <Position>2</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="313" parent="288" name="thread_id">
+      <Position>3</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="314" parent="288" name="expire_time">
+      <Position>4</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="315" parent="288" name="uniq_lock_key">
+      <ColNames>lock_key</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="316" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="317" parent="288" name="uniq_lock_key">
+      <ColNames>lock_key</ColNames>
+      <UnderlyingIndexName>uniq_lock_key</UnderlyingIndexName>
+    </key>
+    <column id="318" parent="289" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="319" parent="289" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="320" parent="289" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="321" parent="289" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="322" parent="290" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="323" parent="290" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="324" parent="290" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="325" parent="290" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="326" parent="291" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="327" parent="291" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="328" parent="291" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="329" parent="291" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="330" parent="292" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="331" parent="292" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="332" parent="292" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="333" parent="292" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="334" parent="293" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="335" parent="293" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="336" parent="293" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="337" parent="293" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="338" parent="294" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="339" parent="294" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="340" parent="294" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="341" parent="294" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="342" parent="295" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="343" parent="295" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="344" parent="295" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="345" parent="295" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="346" parent="296" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="347" parent="296" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="348" parent="296" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="349" parent="296" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="350" parent="297" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="351" parent="297" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="352" parent="297" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="353" parent="297" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="354" parent="298" name="lock_key">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="355" parent="298" name="thread_name">
+      <Position>2</Position>
+      <Comment>锁的当前线程</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="356" parent="298" name="expire_time">
+      <Position>3</Position>
+      <Comment>锁失效时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="357" parent="298" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>lock_key</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="358" parent="299" name="id">
+      <Position>1</Position>
+      <Comment>id</Comment>
+      <DataType>bigint unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="359" parent="299" name="stock_id">
+      <Position>2</Position>
+      <Comment>库存id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="360" parent="299" name="activity_id">
+      <Position>3</Position>
+      <Comment>活动id</Comment>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="361" parent="299" name="use_stock">
+      <Position>4</Position>
+      <Comment>当前已使用库存</Comment>
+      <DataType>int unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="362" parent="299" name="total_stock">
+      <Position>5</Position>
+      <Comment>总可使用库存</Comment>
+      <DataType>int unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="363" parent="299" name="create_time">
+      <Position>6</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="364" parent="299" name="uniq_stock_id">
+      <ColNames>stock_id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="365" parent="299" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="366" parent="299" name="uniq_stock_id">
       <ColNames>stock_id</ColNames>
       <UnderlyingIndexName>uniq_stock_id</UnderlyingIndexName>
     </key>

@@ -1,5 +1,6 @@
 package com.kaiqiang.learn.seckill.spring;
 
+import com.kaiqiang.learn.seckill.dao.SeckillActivityDao;
 import com.kaiqiang.learn.seckill.dao.StockDao;
 import com.kaiqiang.learn.seckill.model.SeckillActivity;
 import org.springframework.beans.factory.InitializingBean;
@@ -17,8 +18,16 @@ public class SpringBeanSupport implements InitializingBean {
     @Resource
     private StockDao stockDao;
 
+    @Resource
+    private SeckillActivityDao seckillActivityDao;
+
+    @Resource
+    private TxSupport txSupport;
+
     @Override
     public void afterPropertiesSet() throws Exception {
         SeckillActivity.setStockDao(stockDao);
+        SeckillActivity.setSeckillActivityDao(seckillActivityDao);
+        SeckillActivity.setTxSupport(txSupport);
     }
 }

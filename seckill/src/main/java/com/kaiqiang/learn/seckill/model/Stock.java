@@ -1,16 +1,18 @@
 package com.kaiqiang.learn.seckill.model;
 
+import org.apache.ibatis.type.Alias;
+
 import java.time.LocalDateTime;
 
 /**
  * @Author kaiqiang
  * @Date 2020/09/07
  */
+@Alias("Stock")
 public class Stock {
 
     private String stockId;
     private int totalStock;
-    private LocalDateTime createTime;
 
     /**
      * 是否有剩余库存
@@ -34,14 +36,6 @@ public class Stock {
 
     public void setTotalStock(int totalStock) {
         this.totalStock = totalStock;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(LocalDateTime createTime) {
-        this.createTime = createTime;
     }
 
     public boolean isHasRemain() {

@@ -1,8 +1,14 @@
 package com.kaiqiang.learn.seckill.model;
 
+import com.kaiqiang.learn.seckill.CheckUtil;
+import com.kaiqiang.learn.seckill.dao.SeckillActivityDao;
 import com.kaiqiang.learn.seckill.dao.StockDao;
+import com.kaiqiang.learn.seckill.exception.InitActivityException;
+import com.kaiqiang.learn.seckill.service.IdGenerator;
+import com.kaiqiang.learn.seckill.service.SimpleIdGenerator;
+import com.kaiqiang.learn.seckill.spring.TxSupport;
+import org.apache.commons.lang.StringUtils;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -16,6 +22,10 @@ import java.util.*;
 public class SeckillActivity {
 
     private static StockDao stockDao;
+    private static SeckillActivityDao seckillActivityDao;
+    private static TxSupport txSupport;
+
+    private static final IdGenerator idGenerator = new SimpleIdGenerator();
 
     /**
      * 活动id
@@ -41,30 +51,59 @@ public class SeckillActivity {
     private SeckillActivity() {
     }
 
-    public static SeckillActivity initProductActivity(String activityId) {
-        SeckillActivity result = new SeckillActivity();
-        Stock stock = new Stock();
-        stock.setHasRemain(true);
-        stock.setStockId("apple_20200907-01");
+    public static SeckillActivity initActivity(String activityId) {
+        CheckUtil.checkParam(activityId, String::isEmpty, "Parameter 'activityId' should not be empty.");
 
-        Stock stock2 = new Stock();
-        stock2.setHasRemain(true);
-        stock2.setStockId("apple_20200907-02");
+        try {
+            SeckillActivity activity = new SeckillActivity();
+            List<Stock> stocks = stockDao.selectByActivityId(activityId);
+            if(stocks == null || stocks.isEmpty()) {
+                throw new InitActivityException("未查到活动对应的库存数据");
+            }
+            HashMap<String, Stock> map = new HashMap<>();
+            stocks.forEach(s -> {
+                map.put(s.getStockId(), s);
+            });
+            activity.stockMap = map;
+            activity.hasRemainStockIdList = new ArrayList<>(map.keySet());
+            activity.activityId = activityId;
+            activity.hasRemain = true;
+            return activity;
+        } catch (Exception e) {
+            throw new InitActivityException("从db中载入活动失败", e);
+        }
+    }
 
-        Stock stock3 = new Stock();
-        stock3.setHasRemain(true);
-        stock3.setStockId("apple_20200907-03");
+    /**
+     * 创建一个活动
+     *
+     * @param activityPrefix 活动前缀
+     * @param stocks 总库存 > 0
+     *
+     * @return 创建活动id
+     */
+    public static String createSecActivity(String activityPrefix,
+                                         String activityName,
+                                         List<Integer> stocks) {
 
-        List<Stock> stocks = Arrays.asList(stock, stock2, stock3);
+        CheckUtil.checkParam(activityPrefix, StringUtils::isEmpty, "Parameter 'activityPrefix' should not be empty.");
+        CheckUtil.checkParam(activityName, StringUtils::isEmpty, "Parameter 'activityName' should not be empty.");
+        CheckUtil.checkParam(stocks, p -> p == null || p.isEmpty(), "Parameter 'stocks' should not be empty.");
+        CheckUtil.checkParam(stocks, p -> p.stream().anyMatch(v -> v <= 0), "Parameter 'stocks' elem should > 0.");
 
-        result.stockMap = new HashMap<>();
-        stocks.forEach(s -> {
-            result.stockMap.put(s.getStockId(), s);
-        });
-        result.hasRemainStockIdList = new ArrayList<>(result.stockMap.keySet());
-        result.activityId = activityId;
-        result.hasRemain = true;
-        return result;
+        try {
+            long nextId = idGenerator.getNextId();
+            String activityId = activityPrefix + "_" + nextId;
+            txSupport.executeWithDefaultTx(v -> {
+                seckillActivityDao.insert(activityId, activityName);
+                for (int i = 0; i < stocks.size(); i++) {
+                    stockDao.initStock(activityId + "_" + i, activityId, stocks.get(i));
+                }
+            });
+            return activityId;
+        } catch (Exception e) {
+            throw new RuntimeException("创建活动失败", e);
+        }
     }
 
     /**
@@ -136,5 +175,14 @@ public class SeckillActivity {
     public static void setStockDao(StockDao stockDao) {
         Objects.requireNonNull(stockDao, "Parameter 'stockDao' should not be null");
         SeckillActivity.stockDao = stockDao;
+    }
+    public static void setSeckillActivityDao(SeckillActivityDao seckillActivityDao) {
+        Objects.requireNonNull(seckillActivityDao, "Parameter 'seckillActivityDao' should not be null");
+        SeckillActivity.seckillActivityDao = seckillActivityDao;
+    }
+
+    public static void setTxSupport(TxSupport txSupport) {
+        Objects.requireNonNull(txSupport, "Parameter 'txSupport' should not be null");
+        SeckillActivity.txSupport = txSupport;
     }
 }
