@@ -46,7 +46,7 @@ public class SeckillActivityTest extends SpringTestSupport {
     @Test
     public void test() throws InterruptedException {
         int nThread = 80;
-        int nStock = 100;
+        int nStock = 200;
         int stockCount = 5000;
 
         List<Integer> stocks = new ArrayList<>();

@@ -144,7 +144,6 @@ public class SeckillActivity {
         order.setSecCount(secCount);
         order.setOrderStatus(SecOrder.PRE_PAY);
         order.setInitOrderTime(now);
-        order.setPrePayTimeout(now.plusMinutes(5));
 
         txSupport.executeWithDefaultTx(v -> {
             secBillDao.insert(bill, tableIndex);
@@ -165,7 +164,7 @@ public class SeckillActivity {
 
         boolean success = addUseStock(secCount);
 
-
+        return true;
     }
 
     /**

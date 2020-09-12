@@ -17,6 +17,5 @@ public interface SecOrderDao {
     /**
      * 扣减库存
      */
-    int 
 
 }

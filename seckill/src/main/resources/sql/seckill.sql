@@ -41,9 +41,7 @@ CREATE TABLE sec_order_1
     sec_count int UNSIGNED not null comment '商品个数',
     order_status int not null comment '订单状态',
     init_order_time DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT ' 生单时间',
-    pre_pay_timeout DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '待支付过期时间',
     deduct_stock_time DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '库存扣减时间',
-    after_deduct_timeout DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '库存扣减后订单支付超时时间',
     pay_callback_time DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '支付回调时间',
 
     callback_count int not null default 0 comment '回调业务线接口次数',

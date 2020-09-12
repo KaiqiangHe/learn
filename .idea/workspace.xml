@@ -20,19 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dcaaaf0-c24c-452e-b4ec-b4d4fef68863" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/config/ActivityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/service/IdUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/db/dao/SecOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/db/dao/SecOrderDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/db/pojo/SecOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/db/pojo/SecOrder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/SeckillActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/SeckillActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/spring/SpringBeanSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/spring/SpringBeanSupport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/db/dao/SecBillDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/db/dao/SecBillDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/src/main/resources/mapper/SecOrderDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/resources/mapper/SecOrderDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/src/main/resources/sql/seckill.sql" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/resources/sql/seckill.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SpringTestSupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/SpringTestSupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/db/pojo/SecOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/db/pojo/SecOrder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/model/SeckillActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/model/SeckillActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/spring/SpringBeanSupport.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/spring/SpringBeanSupport.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/target/classes/sql/seckill.sql" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/sql/seckill.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/target/test-classes/com/kaiqiang/learn/seckill/db/dao/SecBillDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/test-classes/com/kaiqiang/learn/seckill/db/dao/SecBillDaoTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/target/test-classes/com/kaiqiang/learn/seckill/model/SeckillActivityTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/test-classes/com/kaiqiang/learn/seckill/model/SeckillActivityTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -252,7 +247,7 @@
       <workItem from="1599485236806" duration="4997000" />
       <workItem from="1599572039395" duration="13172000" />
       <workItem from="1599835222238" duration="3812000" />
-      <workItem from="1599876838322" duration="15676000" />
+      <workItem from="1599876838322" duration="17372000" />
     </task>
     <servers />
   </component>
@@ -316,26 +311,26 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1703" y="490" width="424" height="484" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1598964096633" />
-    <state width="2506" height="438" key="GridCell.Tab.0.bottom" timestamp="1599916093844">
+    <state width="2506" height="403" key="GridCell.Tab.0.bottom" timestamp="1599922426170">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="438" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599916093844" />
-    <state width="2506" height="438" key="GridCell.Tab.0.center" timestamp="1599916093844">
+    <state width="2506" height="403" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
+    <state width="2506" height="403" key="GridCell.Tab.0.center" timestamp="1599922426170">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="438" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599916093844" />
-    <state width="2506" height="438" key="GridCell.Tab.0.left" timestamp="1599916093843">
+    <state width="2506" height="403" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
+    <state width="2506" height="403" key="GridCell.Tab.0.left" timestamp="1599922426170">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="438" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599916093843" />
-    <state width="2506" height="438" key="GridCell.Tab.0.right" timestamp="1599916093844">
+    <state width="2506" height="403" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
+    <state width="2506" height="403" key="GridCell.Tab.0.right" timestamp="1599922426170">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="438" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599916093844" />
+    <state width="2506" height="403" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
     <state width="1866" height="472" key="GridCell.Tab.1.bottom" timestamp="1599898200015">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
@@ -373,10 +368,10 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="807" y="393" width="936" height="678" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.27.2560.1413@0.27.2560.1413" timestamp="1599049321221" />
-    <state x="972" y="418" width="676" height="628" key="find.popup" timestamp="1598780353727">
+    <state x="972" y="418" width="676" height="628" key="find.popup" timestamp="1599921719953">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
-    <state x="972" y="418" width="676" height="628" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1598780353727" />
+    <state x="972" y="418" width="676" height="628" key="find.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599921719953" />
     <state x="137" y="398" width="747" height="602" key="new project wizard" timestamp="1599485387828">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
