@@ -22,9 +22,3 @@ CREATE TABLE seckill_activity(
     PRIMARY KEY (id),
     UNIQUE KEY uniq_activity_id (activity_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
-
-drop table if exists id_generator;
-CREATE TABLE id_generator(
-    id          BIGINT UNSIGNED   NOT NULL AUTO_INCREMENT COMMENT 'id',
-    PRIMARY KEY (id)
-) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;

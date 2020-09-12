@@ -4,8 +4,8 @@ import com.kaiqiang.learn.seckill.CheckUtil;
 import com.kaiqiang.learn.seckill.dao.SeckillActivityDao;
 import com.kaiqiang.learn.seckill.dao.StockDao;
 import com.kaiqiang.learn.seckill.exception.InitActivityException;
+import com.kaiqiang.learn.seckill.service.impi.HutooIdGenerator;
 import com.kaiqiang.learn.seckill.service.IdGenerator;
-import com.kaiqiang.learn.seckill.service.SimpleIdGenerator;
 import com.kaiqiang.learn.seckill.spring.TxSupport;
 import org.apache.commons.lang.StringUtils;
 
@@ -25,7 +25,7 @@ public class SeckillActivity {
     private static SeckillActivityDao seckillActivityDao;
     private static TxSupport txSupport;
 
-    private static final IdGenerator idGenerator = new SimpleIdGenerator();
+    private static final IdGenerator idGenerator = new HutooIdGenerator();
 
     /**
      * 活动id

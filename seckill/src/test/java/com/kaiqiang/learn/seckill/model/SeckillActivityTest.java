@@ -33,16 +33,19 @@ public class SeckillActivityTest extends SpringTestSupport {
     }
 
     /**
-     *
+     * nThread  nStock      stockCount      time    t per second
+     * 100      5           5000            48068   520
+     * 100      10          5000            50727
      */
     @Test
     public void test() throws InterruptedException {
-        int nThread = 200;
-        int nStock = 2000;
+        int nThread = 10;
+        int nStock = 1;
+        int stockCount = 5000;
 
         List<Integer> stocks = new ArrayList<>();
-        for (int i = 0; i < nThread; i++) {
-            stocks.add(nStock);
+        for (int i = 0; i < nStock; i++) {
+            stocks.add(stockCount);
         }
         String activityId = SeckillActivity.createSecActivity("banana", "测试", stocks);
         SeckillActivity activity = SeckillActivity.initActivity(activityId);
@@ -50,9 +53,9 @@ public class SeckillActivityTest extends SpringTestSupport {
         for (int i = 0; i < nThread; i++) {
             runnables.add(() -> {
                 try {
-                    for (int j = 0; j < nStock; j++) {
-//                        log.info("add use count {}", activity.addUseStock(1));
-                        activity.addUseStock(1);
+                    for (int j = 0; j < stockCount * nStock / nThread + nThread; j++) {
+                        log.info("add use count {}", activity.addUseStock(1));
+//                        activity.addUseStock(1);
                     }
                 } catch (Exception e) {
                     log.error("exception ", e);
