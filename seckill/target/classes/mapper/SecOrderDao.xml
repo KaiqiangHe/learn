@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaiqiang.learn.seckill.db.dao.SecOrderDao">
+
+    <sql id="selectField">id, lock_key, thread_id, expire_time</sql>
+
+   <insert id="initOrder">
+       insert into sec_order_#{tableIndex}
+       (user_id, activity_id, order_no, bill_no,
+       product_id, sec_count, order_status,
+       init_order_time, pre_pay_timeout)
+       value
+       (#{order.userId}, #{order.activityId}, #{order.orderNo}, #{order.billNo},
+       #{order.productId}, #{order.secCount}, #{order.orderStatus},
+       #{order.initOrderTime}, #{order.prePayTimeout})
+   </insert>
+
+</mapper>

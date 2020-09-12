@@ -1,7 +1,7 @@
 package com.kaiqiang.learn.seckill.spring;
 
-import com.kaiqiang.learn.seckill.dao.SeckillActivityDao;
-import com.kaiqiang.learn.seckill.dao.StockDao;
+import com.kaiqiang.learn.seckill.db.dao.SeckillActivityDao;
+import com.kaiqiang.learn.seckill.db.dao.StockDao;
 import com.kaiqiang.learn.seckill.model.SeckillActivity;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;

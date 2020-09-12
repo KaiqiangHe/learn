@@ -1,4 +1,4 @@
-package com.kaiqiang.learn.seckill.pojo;
+package com.kaiqiang.learn.seckill.db.pojo;
 
 import lombok.Data;
 import org.apache.ibatis.type.Alias;
@@ -22,13 +22,14 @@ import java.time.LocalDateTime;
 public class SecOrder {
 
     private Long id;
+    private String userId;
     private String activityId;
     private String orderNo;
     private String billNo;
-    private Long productId;
+    private String productId;
 
     // 商品数
-    private Integer count;
+    private Integer secCount;
 
     /**
      * 待支付，已扣减库存，支付成功，支付失败，待支付超时，已扣减库存后超时
@@ -42,7 +43,7 @@ public class SecOrder {
     // 生单时间
     private LocalDateTime initOrderTime;
     // 待支付过期时间
-    private LocalDateTime prePayTimeOut;
+    private LocalDateTime prePayTimeout;
     // 库存扣减时间
     private LocalDateTime deductStockTime;
     // 库存扣减后订单支付超时时间

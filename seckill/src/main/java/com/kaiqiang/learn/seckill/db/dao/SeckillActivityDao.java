@@ -1,4 +1,4 @@
-package com.kaiqiang.learn.seckill.dao;
+package com.kaiqiang.learn.seckill.db.dao;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;

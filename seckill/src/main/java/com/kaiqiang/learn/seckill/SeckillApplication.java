@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Import;
  * @Date 2020/08/30
  */
 @SpringBootApplication
-@MapperScan("com.kaiqiang.learn.seckill.dao")
+@MapperScan("com.kaiqiang.learn.seckill.db.dao")
 public class SeckillApplication {
 
     public static void main(String[] args) {

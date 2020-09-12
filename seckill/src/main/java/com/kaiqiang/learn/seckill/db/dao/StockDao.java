@@ -1,4 +1,4 @@
-package com.kaiqiang.learn.seckill.dao;
+package com.kaiqiang.learn.seckill.db.dao;
 
 import com.kaiqiang.learn.seckill.model.Stock;
 import org.apache.ibatis.annotations.Insert;

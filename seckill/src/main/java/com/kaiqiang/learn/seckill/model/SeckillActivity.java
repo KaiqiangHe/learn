@@ -1,8 +1,8 @@
 package com.kaiqiang.learn.seckill.model;
 
 import com.kaiqiang.learn.seckill.CheckUtil;
-import com.kaiqiang.learn.seckill.dao.SeckillActivityDao;
-import com.kaiqiang.learn.seckill.dao.StockDao;
+import com.kaiqiang.learn.seckill.db.dao.SeckillActivityDao;
+import com.kaiqiang.learn.seckill.db.dao.StockDao;
 import com.kaiqiang.learn.seckill.exception.InitActivityException;
 import com.kaiqiang.learn.seckill.service.impi.HutooIdGenerator;
 import com.kaiqiang.learn.seckill.service.IdGenerator;
