@@ -11,6 +11,7 @@ CREATE TABLE stock(
                       UNIQUE KEY uniq_stock_id (stock_id)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
+/* 分表 */
 drop table if exists sec_bill;
 CREATE TABLE sec_bill
 (
@@ -27,6 +28,7 @@ CREATE TABLE sec_bill
 ) ENGINE = INNODB
   DEFAULT CHARSET = utf8mb4;
 
+/* 分表 */
 drop table if exists sec_order_1;
 CREATE TABLE sec_order_1
 (

@@ -32,29 +32,26 @@ public class SecOrder {
     private Integer secCount;
 
     /**
-     * 待支付，已扣减库存，支付成功，支付失败，待支付超时，已扣减库存后超时
+     * 待支付 已扣减库存 支付成功
+     * 秒杀系统一般会很快抢完，可认为超时时间为活动结束时间
      * PRE_PAY      ->      STOCK_DEDUCTED      ->      PAY_SUCCESS or PAY_FAILED
      *    |                     |
-     * PRE_PAY_TIMEOUT      AFTER_DEDUCTED_TIMEOUT
+     * TIME_OUT             TIME_OUT
      */
-    public static final int PRE_PAY = 1, PRE_PAY_TIMEOUT = 3, STOCK_DEDUCTED = 2, AFTER_DEDUCTED_TIMEOUT = 3, PAY_SUCCESS = 4, PAY_FAILED = 5;
+    public static final int PRE_PAY = 1, STOCK_DEDUCTED = 2, PAY_SUCCESS = 4, PAY_FAILED = 5;
     private int orderStatus;
 
     // 生单时间
     private LocalDateTime initOrderTime;
-    // 待支付过期时间
-    private LocalDateTime prePayTimeout;
     // 库存扣减时间
     private LocalDateTime deductStockTime;
-    // 库存扣减后订单支付超时时间
-    private LocalDateTime afterDeductTimeout;
     // 支付回调时间
     private LocalDateTime payCallbackTime;
 
     private String ext;
 
     // --------------------------------------------------
-    // 当订单处于PAY_SUCCESS时，回调业务线接口
+    // 当订单数据回调业务线接口
     private int callbackCount;
     private LocalDateTime lastCallbackTime;
     private boolean callbackSuccess;

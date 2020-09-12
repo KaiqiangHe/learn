@@ -14,4 +14,9 @@ public interface SecOrderDao {
     int initOrder(@Param("order") SecOrder order,
                   @Param("tableIndex") int tableIndex);
 
+    /**
+     * 扣减库存
+     */
+    int 
+
 }

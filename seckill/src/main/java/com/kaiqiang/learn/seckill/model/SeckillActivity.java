@@ -1,14 +1,18 @@
 package com.kaiqiang.learn.seckill.model;
 
 import com.kaiqiang.learn.seckill.CheckUtil;
-import com.kaiqiang.learn.seckill.db.dao.SeckillActivityDao;
-import com.kaiqiang.learn.seckill.db.dao.StockDao;
+import com.kaiqiang.learn.seckill.db.dao.*;
+import com.kaiqiang.learn.seckill.db.pojo.SecBill;
+import com.kaiqiang.learn.seckill.db.pojo.SecOrder;
 import com.kaiqiang.learn.seckill.exception.InitActivityException;
+import com.kaiqiang.learn.seckill.service.IdUtil;
 import com.kaiqiang.learn.seckill.service.impi.HutooIdGenerator;
 import com.kaiqiang.learn.seckill.service.IdGenerator;
 import com.kaiqiang.learn.seckill.spring.TxSupport;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -19,18 +23,23 @@ import java.util.*;
  * @Author kaiqiang
  * @Date 2020/09/07
  */
+@Slf4j
 public class SeckillActivity {
 
     private static StockDao stockDao;
     private static SeckillActivityDao seckillActivityDao;
     private static TxSupport txSupport;
-
-    private static final IdGenerator idGenerator = new HutooIdGenerator();
+    private static SecBillDao secBillDao;
+    private static SecOrderDao secOrderDao;
 
     /**
      * 活动id
      */
     private String activityId;
+    private String productId = "banana-202009";
+    private String price = "69.00";
+    private int secCount = 1;
+    private int payPreTimeoutMinutes = 5;
 
     /**
      * key stockId
@@ -92,7 +101,7 @@ public class SeckillActivity {
         CheckUtil.checkParam(stocks, p -> p.stream().anyMatch(v -> v <= 0), "Parameter 'stocks' elem should > 0.");
 
         try {
-            long nextId = idGenerator.getNextId();
+            String nextId = IdUtil.getNextId();
             String activityId = activityPrefix + "_" + nextId;
             txSupport.executeWithDefaultTx(v -> {
                 seckillActivityDao.insert(activityId, activityName);
@@ -104,6 +113,59 @@ public class SeckillActivity {
         } catch (Exception e) {
             throw new RuntimeException("创建活动失败", e);
         }
+    }
+
+    /**
+     * 创建订单
+     */
+    public boolean createOrder(String userId) {
+        // 判断当前是否有库存
+        if(!hasRemain) {
+            return false;
+        }
+
+        int tableIndex = DaoHelper.getTableIndex(userId);
+        String orderNo = IdUtil.getOrderNo();
+        String billNo = IdUtil.getBillNo();
+
+        SecBill bill = new SecBill();
+        bill.setUserId(userId);
+        bill.setBillNo(billNo);
+        bill.setExt("");
+        bill.setPrice(price);
+
+        LocalDateTime now = LocalDateTime.now();
+        SecOrder order = new SecOrder();
+        order.setUserId(userId);
+        order.setActivityId(activityId);
+        order.setOrderNo(orderNo);
+        order.setBillNo(billNo);
+        order.setProductId(productId);
+        order.setSecCount(secCount);
+        order.setOrderStatus(SecOrder.PRE_PAY);
+        order.setInitOrderTime(now);
+        order.setPrePayTimeout(now.plusMinutes(5));
+
+        txSupport.executeWithDefaultTx(v -> {
+            secBillDao.insert(bill, tableIndex);
+            secOrderDao.initOrder(order, tableIndex);
+        });
+
+        return true;
+    }
+
+    /**
+     * 支付前扣除库存
+     */
+    private boolean deductStock(String orderNo, int secCount) {
+        if(!hasRemain) {
+            return false;
+        }
+
+
+        boolean success = addUseStock(secCount);
+
+
     }
 
     /**
@@ -171,6 +233,8 @@ public class SeckillActivity {
         }
     }
 
+
+
     // --------------------------------------------------------------------------------------------
     public static void setStockDao(StockDao stockDao) {
         Objects.requireNonNull(stockDao, "Parameter 'stockDao' should not be null");
@@ -184,5 +248,13 @@ public class SeckillActivity {
     public static void setTxSupport(TxSupport txSupport) {
         Objects.requireNonNull(txSupport, "Parameter 'txSupport' should not be null");
         SeckillActivity.txSupport = txSupport;
+    }
+
+    public static void setSecBillDao(SecBillDao secBillDao) {
+        SeckillActivity.secBillDao = secBillDao;
+    }
+
+    public static void setSecOrderDao(SecOrderDao secOrderDao) {
+        SeckillActivity.secOrderDao = secOrderDao;
     }
 }

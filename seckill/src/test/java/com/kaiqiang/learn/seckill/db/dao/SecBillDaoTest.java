@@ -1,17 +1,12 @@
 package com.kaiqiang.learn.seckill.db.dao;
 
 import com.kaiqiang.learn.seckill.db.pojo.SecBill;
-import com.kaiqiang.learn.seckill.db.pojo.SecOrder;
-import com.kaiqiang.learn.seckill.model.SpringTestSupport;
+import com.kaiqiang.learn.seckill.SpringTestSupport;
 import com.kaiqiang.learn.seckill.service.IdGenerator;
 import com.kaiqiang.learn.seckill.service.impi.HutooIdGenerator;
 import org.junit.jupiter.api.Test;
 
 import javax.annotation.Resource;
-
-import java.time.LocalDateTime;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SecBillDaoTest extends SpringTestSupport {
 

@@ -1,4 +1,4 @@
-package com.kaiqiang.learn.seckill.model;
+package com.kaiqiang.learn.seckill;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

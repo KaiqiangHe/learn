@@ -1,5 +1,6 @@
 package com.kaiqiang.learn.seckill.model;
 
+import com.kaiqiang.learn.seckill.SpringTestSupport;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,11 +26,16 @@ public class SeckillActivityTest extends SpringTestSupport {
                 "apple", "apple秒杀",
                 Arrays.asList(5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000));
         SeckillActivity activity = SeckillActivity.initActivity(activityId);
-        for (int i = 0; i < 6000; i++) {
+        long start = System.currentTimeMillis();
+        /*for (int i = 0; i < 6000; i++) {
             log.info("add use count {}", activity.addUseStock(1));
-        }
+        }*/
 
+        for (int i = 0; i < 2000; i++) {
+            activity.createOrder("sfjslfjljlwejfewofoew" + i);
+        }
         log.info("end----------------------------------");
+        log.info("time = {}", System.currentTimeMillis() - start);
     }
 
     /**
@@ -39,8 +45,8 @@ public class SeckillActivityTest extends SpringTestSupport {
      */
     @Test
     public void test() throws InterruptedException {
-        int nThread = 10;
-        int nStock = 1;
+        int nThread = 80;
+        int nStock = 100;
         int stockCount = 5000;
 
         List<Integer> stocks = new ArrayList<>();
@@ -54,8 +60,9 @@ public class SeckillActivityTest extends SpringTestSupport {
             runnables.add(() -> {
                 try {
                     for (int j = 0; j < stockCount * nStock / nThread + nThread; j++) {
-                        log.info("add use count {}", activity.addUseStock(1));
+//                        log.info("add use count {}", activity.addUseStock(1));
 //                        activity.addUseStock(1);
+                        activity.createOrder("sfjslfjljlwejfewofoew" + j);
                     }
                 } catch (Exception e) {
                     log.error("exception ", e);
