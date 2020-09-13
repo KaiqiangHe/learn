@@ -13,6 +13,23 @@ public class SeckillActivityTest extends SpringTestSupport {
 
     private static final Logger log = LoggerFactory.getLogger(SeckillActivityTest.class);
 
+    /**
+     * 测试一个完成流程
+     */
+    @Test
+    public void test() {
+        String activityId = SeckillActivity.createSecActivity(
+                "apple", "apple秒杀",
+                Arrays.asList(1));
+        SeckillActivity activity = SeckillActivity.initActivity(activityId);
+
+        String userId = "kaiqiang";
+
+        String orderNo = activity.createOrder(userId);
+        activity.deductStock(orderNo, userId);
+        activity.payCallback(orderNo, userId);
+    }
+
     @Test
     public void testCreateActivity() {
         SeckillActivity.createSecActivity(
@@ -44,7 +61,7 @@ public class SeckillActivityTest extends SpringTestSupport {
      * 100      10          5000            50727
      */
     @Test
-    public void test() throws InterruptedException {
+    public void testPerformance() throws InterruptedException {
         int nThread = 80;
         int nStock = 200;
         int stockCount = 5000;

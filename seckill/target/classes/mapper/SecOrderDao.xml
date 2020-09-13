@@ -4,13 +4,33 @@
 
     <sql id="selectField">id, lock_key, thread_id, expire_time</sql>
 
-   <insert id="initOrder">
+    <insert id="initOrder">
        insert into sec_order_#{tableIndex}
        (user_id, activity_id, order_no, bill_no,
-       product_id, sec_count, order_status, init_order_time)
+       product_id, sec_count, init_order_time,
+       order_status)
        value
        (#{order.userId}, #{order.activityId}, #{order.orderNo}, #{order.billNo},
-       #{order.productId}, #{order.secCount}, #{order.orderStatus}, #{order.initOrderTime})
-   </insert>
+       #{order.productId}, #{order.secCount}, #{order.initOrderTime},
+       ${@com.kaiqiang.learn.seckill.db.pojo.SecOrder@PRE_PAY})
+    </insert>
+
+    <update id="deductOrder">
+        update sec_order_#{tableIndex}
+        set order_status = ${@com.kaiqiang.learn.seckill.db.pojo.SecOrder@STOCK_DEDUCTED},
+            deduct_stock_time = #{deductStockTime}
+        where
+            order_no = #{orderNo} and
+            order_status = ${@com.kaiqiang.learn.seckill.db.pojo.SecOrder@PRE_PAY}
+    </update>
+
+    <update id="payCallback">
+        update sec_order_#{tableIndex}
+        set order_status = #{orderStatus},
+            pay_callback_time = #{payCallbackTime}
+        where
+            order_no = #{orderNo} and
+            order_status = ${@com.kaiqiang.learn.seckill.db.pojo.SecOrder@STOCK_DEDUCTED}
+    </update>
 
 </mapper>

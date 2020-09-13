@@ -2,7 +2,10 @@ package com.kaiqiang.learn.seckill.db.dao;
 
 import com.kaiqiang.learn.seckill.db.pojo.SecOrder;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
 
 /**
  * @Author kaiqiang
@@ -15,7 +18,18 @@ public interface SecOrderDao {
                   @Param("tableIndex") int tableIndex);
 
     /**
-     * 扣减库存
+     * 更新订单状态为已扣减库存
      */
+    int deductOrder(@Param("orderNo") String orderNo,
+                    @Param("deductStockTime")LocalDateTime deductStockTime,
+                    @Param("tableIndex") int tableIndex);
+
+    /**
+     * @param status PAY_SUCCESS PAY_FAILED
+     */
+    int payCallback(@Param("orderNo") String orderNo,
+                    @Param("orderStatus") int orderStatus,
+                    @Param("payCallbackTime")LocalDateTime payCallbackTime,
+                    @Param("tableIndex") int tableIndex);
 
 }

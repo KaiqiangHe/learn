@@ -5,9 +5,9 @@ import com.kaiqiang.learn.seckill.db.dao.*;
 import com.kaiqiang.learn.seckill.db.pojo.SecBill;
 import com.kaiqiang.learn.seckill.db.pojo.SecOrder;
 import com.kaiqiang.learn.seckill.exception.InitActivityException;
+import com.kaiqiang.learn.seckill.exception.StockNotEnough;
+import com.kaiqiang.learn.seckill.exception.UpdateOrderStatusException;
 import com.kaiqiang.learn.seckill.service.IdUtil;
-import com.kaiqiang.learn.seckill.service.impi.HutooIdGenerator;
-import com.kaiqiang.learn.seckill.service.IdGenerator;
 import com.kaiqiang.learn.seckill.spring.TxSupport;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -117,11 +117,12 @@ public class SeckillActivity {
 
     /**
      * 创建订单
+     *
+     * @return orderNo, nullable
      */
-    public boolean createOrder(String userId) {
-        // 判断当前是否有库存
+    public String createOrder(String userId) {
         if(!hasRemain) {
-            return false;
+            return null;
         }
 
         int tableIndex = DaoHelper.getTableIndex(userId);
@@ -150,21 +151,46 @@ public class SeckillActivity {
             secOrderDao.initOrder(order, tableIndex);
         });
 
-        return true;
+        return orderNo;
     }
 
     /**
      * 支付前扣除库存
      */
-    private boolean deductStock(String orderNo, int secCount) {
+    public boolean deductStock(String orderNo, String userId) {
         if(!hasRemain) {
             return false;
         }
 
-
-        boolean success = addUseStock(secCount);
+        try {
+            txSupport.executeWithDefaultTx(v -> {
+                // 更新订单状态为已扣减
+                int rowEffect = secOrderDao.deductOrder(orderNo, LocalDateTime.now(), DaoHelper.getTableIndex(userId));
+                if(rowEffect != 1) {
+                    throw new UpdateOrderStatusException(orderNo, "更新订单状态为STOCK_DEDUCTED失败");
+                }
+                // 扣减库存
+                boolean deducted = addUseStock(secCount);
+                if(!deducted) {
+                    throw new StockNotEnough("扣减库存失败");
+                }
+            });
+        } catch (StockNotEnough e) {
+            log.info("库存不足, orderNo = {}", orderNo, e);
+            return false;
+        } catch (Exception e) {
+            log.error("deductStock失败, orderNo = {}", orderNo, e);
+            return false;
+        }
 
         return true;
+    }
+
+    /**
+     * 支付成功
+     */
+    public void payCallback(String orderNo, String userId) {
+        secOrderDao.payCallback(orderNo, SecOrder.PAY_SUCCESS, LocalDateTime.now(), DaoHelper.getTableIndex(userId));
     }
 
     /**

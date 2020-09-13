@@ -19,6 +19,8 @@ import java.util.List;
  * 方案可以参考：让对同一lockKey的写操作串行化
  * 仍未解决死锁，问题可能出现在gap锁，尝试设置事务隔离级别为RC后，仍有gap锁
  *
+ * // TODO: 2020/9/12  只是单表的CRUD, 考虑将其迁移至hutool jdbc 库
+ *
  * @Author kaiqiang
  * @Date 2020/08/30
  */

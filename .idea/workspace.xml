@@ -20,15 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6dcaaaf0-c24c-452e-b4ec-b4d4fef68863" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/exception/StockNotEnough.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/exception/UpdateOrderStatusException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/db/dao/SecOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/db/dao/SecOrderDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/SeckillActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/java/com/kaiqiang/learn/seckill/model/SeckillActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/src/main/resources/mapper/SecOrderDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/resources/mapper/SecOrderDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/src/main/resources/sql/seckill.sql" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/main/resources/sql/seckill.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/db/pojo/SecOrder.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/db/pojo/SecOrder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/model/SeckillActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/com/kaiqiang/learn/seckill/model/SeckillActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/target/classes/sql/seckill.sql" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/classes/sql/seckill.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seckill/target/test-classes/com/kaiqiang/learn/seckill/model/SeckillActivityTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/seckill/target/test-classes/com/kaiqiang/learn/seckill/model/SeckillActivityTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +245,9 @@
       <workItem from="1599485236806" duration="4997000" />
       <workItem from="1599572039395" duration="13172000" />
       <workItem from="1599835222238" duration="3812000" />
-      <workItem from="1599876838322" duration="17372000" />
+      <workItem from="1599876838322" duration="17480000" />
+      <workItem from="1599922901649" duration="693000" />
+      <workItem from="1599963714220" duration="5195000" />
     </task>
     <servers />
   </component>
@@ -282,11 +282,11 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1418" y="394" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2560.1413@0.27.2560.1413" timestamp="1598772355839" />
-    <state x="1223" y="331" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1599897550803">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser" timestamp="1599964824749">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1223" y="331" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.27.1920.1053@0.27.1920.1053" timestamp="1599897550803" />
-    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.27.2560.1413@0.27.2560.1413" timestamp="1599877594043" />
+    <state x="1631" y="435" width="374" height="595" key="#com.intellij.ide.util.MemberChooser/0.27.2560.1413@0.27.2560.1413" timestamp="1599964824749" />
     <state x="796" y="649" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1599881247193">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
@@ -311,46 +311,46 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1703" y="490" width="424" height="484" key="FileChooserDialogImpl/0.27.2560.1413@0.27.2560.1413" timestamp="1598964096633" />
-    <state width="2506" height="403" key="GridCell.Tab.0.bottom" timestamp="1599922426170">
+    <state width="2506" height="652" key="GridCell.Tab.0.bottom" timestamp="1599972159794">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="403" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
-    <state width="2506" height="403" key="GridCell.Tab.0.center" timestamp="1599922426170">
+    <state width="2506" height="652" key="GridCell.Tab.0.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599972159794" />
+    <state width="2506" height="652" key="GridCell.Tab.0.center" timestamp="1599972159794">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.center/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="403" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
-    <state width="2506" height="403" key="GridCell.Tab.0.left" timestamp="1599922426170">
+    <state width="2506" height="652" key="GridCell.Tab.0.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599972159794" />
+    <state width="2506" height="652" key="GridCell.Tab.0.left" timestamp="1599972159793">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.left/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="403" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
-    <state width="2506" height="403" key="GridCell.Tab.0.right" timestamp="1599922426170">
+    <state width="2506" height="652" key="GridCell.Tab.0.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599972159793" />
+    <state width="2506" height="652" key="GridCell.Tab.0.right" timestamp="1599972159794">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="543" key="GridCell.Tab.0.right/0.27.1920.1053@0.27.1920.1053" timestamp="1599899107072" />
-    <state width="2506" height="403" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599922426170" />
-    <state width="1866" height="472" key="GridCell.Tab.1.bottom" timestamp="1599898200015">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="2506" height="652" key="GridCell.Tab.0.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599972159794" />
+    <state width="2506" height="652" key="GridCell.Tab.1.bottom" timestamp="1599972126496">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="472" key="GridCell.Tab.1.bottom/0.27.1920.1053@0.27.1920.1053" timestamp="1599898200015" />
-    <state width="2506" height="839" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599659134914" />
-    <state width="1866" height="472" key="GridCell.Tab.1.center" timestamp="1599898200015">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="2506" height="652" key="GridCell.Tab.1.bottom/0.27.2560.1413@0.27.2560.1413" timestamp="1599972126496" />
+    <state width="2506" height="652" key="GridCell.Tab.1.center" timestamp="1599972126494">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="472" key="GridCell.Tab.1.center/0.27.1920.1053@0.27.1920.1053" timestamp="1599898200015" />
-    <state width="2506" height="839" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599659134913" />
-    <state width="1866" height="472" key="GridCell.Tab.1.left" timestamp="1599898200015">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="2506" height="652" key="GridCell.Tab.1.center/0.27.2560.1413@0.27.2560.1413" timestamp="1599972126494" />
+    <state width="2506" height="652" key="GridCell.Tab.1.left" timestamp="1599972126493">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="472" key="GridCell.Tab.1.left/0.27.1920.1053@0.27.1920.1053" timestamp="1599898200015" />
-    <state width="2506" height="839" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599659134913" />
-    <state width="1866" height="472" key="GridCell.Tab.1.right" timestamp="1599898200015">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state width="2506" height="652" key="GridCell.Tab.1.left/0.27.2560.1413@0.27.2560.1413" timestamp="1599972126493" />
+    <state width="2506" height="652" key="GridCell.Tab.1.right" timestamp="1599972126494">
+      <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state width="1866" height="472" key="GridCell.Tab.1.right/0.27.1920.1053@0.27.1920.1053" timestamp="1599898200015" />
-    <state width="2506" height="839" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599659134914" />
+    <state width="2506" height="652" key="GridCell.Tab.1.right/0.27.2560.1413@0.27.2560.1413" timestamp="1599972126494" />
     <state x="333" y="364" key="SettingsEditor" timestamp="1599835212996">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
@@ -376,24 +376,29 @@
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="137" y="398" width="747" height="602" key="new project wizard/0.27.2560.1413@0.27.2560.1413" timestamp="1599485387828" />
-    <state x="1486" y="347" width="672" height="678" key="search.everywhere.popup" timestamp="1599916343917">
+    <state x="1486" y="347" width="672" height="678" key="search.everywhere.popup" timestamp="1599964287266">
       <screen x="0" y="27" width="2560" height="1413" />
     </state>
     <state x="1115" y="265" width="672" height="506" key="search.everywhere.popup/0.27.1920.1053@0.27.1920.1053" timestamp="1599895514571" />
-    <state x="1486" y="347" width="672" height="678" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599916343917" />
+    <state x="1486" y="347" width="672" height="678" key="search.everywhere.popup/0.27.2560.1413@0.27.2560.1413" timestamp="1599964287266" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java</url>
-          <line>131</line>
+          <line>133</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/distributed-lock/src/main/java/com/kaiqiang/learn/distributed/lock/mysql/MysqlLock.java</url>
-          <line>104</line>
+          <line>106</line>
           <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/seckill/src/test/java/com/kaiqiang/learn/seckill/model/SeckillActivityTest.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
